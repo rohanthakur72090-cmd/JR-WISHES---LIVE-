@@ -1,0 +1,660 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create Surprise | JR--WISHES</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #100f0d;
+  color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+:root {
+  --gold: #d8b66a;
+  --lightgold: #f5dfa4;
+  --panel: #1c1a16;
+  --border: #49402d;
+}
+
+header {
+  padding: 22px 7%;
+  border-bottom: 1px solid #393326;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  color: var(--lightgold);
+  font-size: 25px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+header a {
+  color: var(--gold);
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.container {
+  width: 90%;
+  max-width: 1050px;
+  margin: 40px auto;
+}
+
+.heading {
+  margin-bottom: 30px;
+}
+
+.heading small {
+  color: var(--gold);
+  letter-spacing: 3px;
+}
+
+.heading h1 {
+  font-family: Georgia, serif;
+  font-size: 42px;
+  margin: 12px 0;
+}
+
+.heading p {
+  color: #aaa;
+  line-height: 1.6;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1.3fr .7fr;
+  gap: 22px;
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  padding: 24px;
+  margin-bottom: 18px;
+}
+
+.card h2 {
+  color: var(--lightgold);
+  font-size: 19px;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-size: 13px;
+  color: #ddd;
+  margin-bottom: 8px;
+}
+
+input, textarea, select {
+  width: 100%;
+  background: #11100e;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 13px;
+  color: white;
+  outline: none;
+  margin-bottom: 17px;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--gold);
+}
+
+textarea {
+  height: 110px;
+  resize: vertical;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.themes {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 10px;
+}
+
+.theme {
+  padding: 13px 8px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 12px;
+  color: white;
+  background: #11100e;
+}
+
+.theme.active {
+  border: 2px solid var(--gold);
+  color: var(--lightgold);
+}
+
+.theme span {
+  display: block;
+  font-size: 23px;
+  margin-bottom: 7px;
+}
+
+.games {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.game {
+  background: #11100e;
+  border: 1px solid var(--border);
+  padding: 13px;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+.game input {
+  width: auto;
+  margin: 0 7px 0 0;
+  accent-color: var(--gold);
+}
+
+.upload {
+  border: 1px dashed var(--gold);
+  border-radius: 10px;
+  padding: 18px;
+}
+
+.upload input {
+  border: none;
+  padding: 5px;
+}
+
+#photosPreview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+#photosPreview img {
+  width: 65px;
+  height: 65px;
+  object-fit: cover;
+  border-radius: 7px;
+}
+
+.preview {
+  text-align: center;
+  position: sticky;
+  top: 20px;
+  height: fit-content;
+}
+
+.preview-box {
+  background: radial-gradient(circle,#49371e,#15130f);
+  border: 1px solid var(--gold);
+  padding: 30px 15px;
+  border-radius: 13px;
+}
+
+.preview-box .cake {
+  font-size: 65px;
+}
+
+.preview-box h2 {
+  font-family: Georgia,serif;
+  color: var(--lightgold);
+  margin: 12px 0;
+}
+
+.preview-box p {
+  color: #ccc;
+  font-size: 13px;
+}
+
+.btn {
+  background: linear-gradient(135deg,#f5dfa4,#bd9548);
+  color: #19140a;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 12px;
+}
+
+.btn:hover {
+  filter: brightness(1.1);
+}
+
+footer {
+  text-align: center;
+  padding: 25px;
+  color: #888;
+  border-top: 1px solid #393326;
+  font-size: 12px;
+}
+
+@media(max-width:750px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .preview {
+    position: static;
+    grid-row: 1;
+  }
+
+  .heading h1 {
+    font-size: 32px;
+  }
+}
+
+@media(max-width:450px) {
+  .row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .themes {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .games {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  header {
+    padding: 18px 5%;
+  }
+
+  .logo {
+    font-size: 19px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">JR--WISHES ✦</div>
+  <a href="index.html">← Back to Home</a>
+</header>
+
+<div class="container">
+
+  <div class="heading">
+    <small>THE SURPRISE STARTS HERE</small>
+    <h1>Create Something Unforgettable.</h1>
+    <p>Make a beautiful birthday experience for someone special.</p>
+  </div>
+
+  <div class="layout">
+
+    <form id="birthdayForm">
+
+      <div class="card">
+        <h2>01. Personal Details</h2>
+
+        <div class="row">
+          <div>
+            <label>Your Name *</label>
+            <input id="sender" type="text"
+              placeholder="Your name" required>
+          </div>
+
+          <div>
+            <label>Birthday Person's Name *</label>
+            <input id="receiver" type="text"
+              placeholder="Their name" required>
+          </div>
+        </div>
+
+        <div class="row">
+          <div>
+            <label>Birthday Date</label>
+            <input id="date" type="date">
+          </div>
+
+          <div>
+            <label>Relationship</label>
+            <select id="relation">
+              <option>Friend</option>
+              <option>Best Friend</option>
+              <option>Family</option>
+              <option>Sibling</option>
+              <option>Someone Special</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>02. Birthday Message</h2>
+
+        <label>Surprise Headline</label>
+        <input id="headline"
+          placeholder="A special day for someone special">
+
+        <label>Write Your Birthday Letter *</label>
+        <textarea id="message"
+          placeholder="Write your heartfelt birthday wishes..."
+          required></textarea>
+      </div>
+
+      <div class="card">
+        <h2>03. Upload Memories 📸</h2>
+
+        <label>Select Multiple Photos</label>
+
+        <div class="upload">
+          <input type="file" id="photos"
+            accept="image/*" multiple>
+          <div id="photosPreview"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>04. Choose Birthday Theme</h2>
+
+        <div class="themes">
+
+          <div class="theme active"
+            data-theme="Midnight Gold">
+            <span>🌙</span>Midnight Gold
+          </div>
+
+          <div class="theme"
+            data-theme="Royal Burgundy">
+            <span>🍷</span>Royal Burgundy
+          </div>
+
+          <div class="theme"
+            data-theme="Dreamy Purple">
+            <span>💜</span>Dreamy Purple
+          </div>
+
+          <div class="theme"
+            data-theme="Rose Pink">
+            <span>🌹</span>Rose Pink
+          </div>
+
+          <div class="theme"
+            data-theme="Classic Ivory">
+            <span>🤍</span>Classic Ivory
+          </div>
+
+          <div class="theme"
+            data-theme="Celebration">
+            <span>🎉</span>Celebration
+          </div>
+
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>05. Birthday Games 🎮</h2>
+
+        <div class="games">
+
+          <label class="game">
+            <input type="checkbox" checked>
+            ✨ Scratch & Reveal
+          </label>
+
+          <label class="game">
+            <input type="checkbox" checked>
+            ❓ Birthday Quiz
+          </label>
+
+          <label class="game">
+            <input type="checkbox" checked>
+            🎁 Mystery Gift Box
+          </label>
+
+          <label class="game">
+            <input type="checkbox" checked>
+            🧠 Memory Match
+          </label>
+
+          <label class="game">
+            <input type="checkbox" checked>
+            🎡 Spin Wheel
+          </label>
+
+          <label class="game">
+            <input type="checkbox" checked>
+            🗺️ Treasure Hunt
+          </label>
+
+          <label class="game">
+            <input type="checkbox" checked>
+            🎈 Balloon Surprise
+          </label>
+
+          <label class="game">
+            <input type="checkbox" checked>
+            🎂 Interactive Cake
+          </label>
+
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>06. Final Touches</h2>
+
+        <label>Background Music</label>
+        <select id="music">
+          <option>No Music</option>
+          <option>Soft Piano</option>
+          <option>Birthday Instrumental</option>
+          <option>Celebration Music</option>
+        </select>
+
+        <label>Game Mode</label>
+        <select id="mode">
+          <option>Both Single Player & Multiplayer</option>
+          <option>Single Player Only</option>
+          <option>Multiplayer Only</option>
+        </select>
+
+        <button type="submit" class="btn">
+          Preview My Surprise →
+        </button>
+
+        <p id="status" style="color:#e8ce8b;margin-top:15px;font-size:12px"></p>
+      </div>
+
+    </form>
+
+    <aside class="card preview">
+
+      <h2>Live Preview</h2>
+
+      <div class="preview-box">
+        <div class="cake">🎂</div>
+
+        <h2 id="previewName">
+          Someone Special
+        </h2>
+
+        <p id="previewHeadline">
+          A special day for someone special
+        </p>
+
+        <br>
+        <p>✦ ───── ✦</p>
+      </div>
+
+      <br>
+
+      <p style="color:#aaa;font-size:12px">
+        FROM
+      </p>
+
+      <h3 id="previewSender"
+        style="color:var(--gold);margin:8px">
+        Your Name
+      </h3>
+
+      <p id="previewTheme"
+        style="color:#aaa;font-size:12px">
+        Theme: Midnight Gold
+      </p>
+
+    </aside>
+
+  </div>
+</div>
+
+<footer>
+  © 2026 JR--WISHES · Make Every Moment Special
+</footer>
+
+<script>
+
+
+// LIVE PREVIEW
+
+const receiver = document.getElementById("receiver");
+const sender = document.getElementById("sender");
+const headline = document.getElementById("headline");
+
+receiver.addEventListener("input", () => {
+  document.getElementById("previewName").textContent =
+    receiver.value || "Someone Special";
+});
+
+sender.addEventListener("input", () => {
+  document.getElementById("previewSender").textContent =
+    sender.value || "Your Name";
+});
+
+headline.addEventListener("input", () => {
+  document.getElementById("previewHeadline").textContent =
+    headline.value || "A special day for someone special";
+});
+
+// THEME SELECTION
+
+document.querySelectorAll(".theme").forEach(theme => {
+  theme.addEventListener("click", () => {
+    document.querySelectorAll(".theme")
+      .forEach(t => t.classList.remove("active"));
+
+    theme.classList.add("active");
+
+    document.getElementById("previewTheme").textContent =
+      "Theme: " + theme.dataset.theme;
+  });
+});
+
+// PHOTO PREVIEW
+
+document.getElementById("photos").addEventListener("change", function() {
+  const preview = document.getElementById("photosPreview");
+  preview.innerHTML = "";
+
+  [...this.files].slice(0, 12).forEach(file => {
+    if (!file.type.startsWith("image/")) return;
+
+    const img = document.createElement("img");
+    img.src = URL.createObjectURL(file);
+    preview.appendChild(img);
+  });
+});
+
+// SAVE DATA AND OPEN BIRTHDAY PAGE
+
+document.getElementById("birthdayForm")
+.addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  const status = document.getElementById("status");
+  status.textContent = "Preparing your birthday surprise...";
+
+  try {
+    const photoFiles = [
+      ...document.getElementById("photos").files
+    ].slice(0, 12);
+
+    // Convert photos into data URLs
+    const photos = await Promise.all(
+      photoFiles.map(file => {
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+
+          reader.onload = () => resolve(reader.result);
+          reader.onerror = reject;
+
+          reader.readAsDataURL(file);
+        });
+      })
+    );
+
+    const selectedTheme =
+      document.querySelector(".theme.active");
+
+    const selectedGames = [
+      ...document.querySelectorAll(".game input:checked")
+    ].map(input =>
+      input.parentElement.textContent.trim()
+    );
+
+    const birthdayData = {
+      sender: sender.value.trim(),
+      receiver: receiver.value.trim(),
+      date: document.getElementById("date").value,
+      relation: document.getElementById("relation").value,
+      headline: headline.value.trim() ||
+        "A special day for someone special",
+      message: document.getElementById("message").value.trim(),
+      theme: selectedTheme
+        ? selectedTheme.dataset.theme
+        : "Midnight Gold",
+      games: selectedGames,
+      photos: photos,
+      music: document.getElementById("music").value,
+      mode: document.getElementById("mode").value
+    };
+
+    // Save birthday details in this browser
+    localStorage.setItem(
+      "jrBirthdayData",
+      JSON.stringify(birthdayData)
+    );
+
+    status.textContent = "Surprise ready! Opening birthday page...";
+
+    window.location.href = "birthday.html";
+
+  } catch (error) {
+    console.error(error);
+    status.textContent =
+      "Something went wrong. Please try again or use fewer/smaller photos.";
+  }
+});
+
+
+</script>
+
+</body>
+</html>

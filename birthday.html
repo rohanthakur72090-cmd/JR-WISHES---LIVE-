@@ -1,0 +1,1352 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JR--WISHES | Birthday Celebration</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --gold: #e9c675;
+  --gold-light: #ffe8ae;
+  --gold-dark: #a77a32;
+  --black: #09090d;
+  --glass: rgba(255,255,255,.055);
+  --border: rgba(233,198,117,.23);
+  --muted: #c5bdad;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  color: #fff;
+  background: #09090d;
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+}
+
+button, input, select { font: inherit; }
+
+button { cursor: pointer; }
+
+button:focus-visible, input:focus-visible, select:focus-visible {
+  outline: 2px solid var(--gold-light);
+  outline-offset: 4px;
+}
+
+/* BACKGROUND */
+
+.background {
+  position: fixed;
+  inset: 0;
+  z-index: -5;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 0%, #48341d 0%, transparent 42%),
+    radial-gradient(ellipse at 5% 80%, #302014 0%, transparent 40%),
+    radial-gradient(ellipse at 95% 65%, #292015 0%, transparent 40%),
+    linear-gradient(145deg, #08080c, #15110d 50%, #08080c);
+}
+
+.glow {
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: .18;
+  animation: glowMove 12s ease-in-out infinite alternate;
+}
+
+.glow.one {
+  background: #c18a35;
+  top: -180px;
+  left: -150px;
+}
+
+.glow.two {
+  background: #8e6329;
+  right: -180px;
+  bottom: -130px;
+  animation-delay: -4s;
+}
+
+.glow.three {
+  background: #f2d18b;
+  left: 40%;
+  top: 45%;
+  opacity: .08;
+  animation-delay: -7s;
+}
+
+@keyframes glowMove {
+  from { transform: translate(0,0) scale(.9); }
+  to { transform: translate(80px,55px) scale(1.25); }
+}
+
+#particles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  bottom: -15px;
+  width: 3px;
+  height: 3px;
+  background: var(--gold-light);
+  border-radius: 50%;
+  box-shadow: 0 0 12px 3px #e9c67555;
+  animation: particleFloat linear infinite;
+}
+
+@keyframes particleFloat {
+  0% { transform: translateY(0) scale(.5); opacity: 0; }
+  15% { opacity: .9; }
+  85% { opacity: .6; }
+  100% { transform: translateY(-110vh) scale(1.5); opacity: 0; }
+}
+
+/* COMMON */
+
+.container {
+  width: min(1100px, 91%);
+  margin: auto;
+}
+
+.gold-text {
+  background: linear-gradient(110deg,#a77a32,#ffe8ae,#d4a64e,#fff0c7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.section {
+  padding: 75px 0 25px;
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 34px;
+}
+
+.section-heading .small {
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: 11px;
+}
+
+.section-heading h2 {
+  font: 600 clamp(34px,6vw,49px) 'Cormorant Garamond',serif;
+  margin: 8px 0;
+}
+
+.section-heading p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.glass-card {
+  background: linear-gradient(145deg,rgba(255,255,255,.09),rgba(255,255,255,.025));
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  box-shadow:
+    inset 0 1px 0 #ffffff12,
+    0 18px 55px #0008,
+    0 0 35px #c18a3510;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.gold-btn {
+  border: 1px solid #ffe5a0;
+  border-radius: 40px;
+  padding: 13px 25px;
+  color: #201608;
+  font-weight: 700;
+  background: linear-gradient(120deg,#a87931,#f7d990,#c08b37);
+  box-shadow: 0 5px 22px #d3a54a35, inset 0 1px 0 #fff8;
+  transition: .3s;
+}
+
+.gold-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 35px #d3a54a65;
+}
+
+.outline-btn {
+  padding: 11px 22px;
+  border-radius: 35px;
+  color: var(--gold-light);
+  border: 1px solid var(--border);
+  background: #ffffff08;
+  transition: .25s;
+  margin: 5px;
+}
+
+.outline-btn:hover {
+  background: #d5a64b20;
+  border-color: var(--gold);
+}
+
+/* NAVIGATION */
+
+nav {
+  width: min(1100px,92%);
+  margin: auto;
+  padding: 23px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  color: var(--gold);
+  font: 700 23px 'Cormorant Garamond',serif;
+  letter-spacing: 2px;
+}
+
+.nav-tag {
+  color: #c7b99f;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+/* HERO */
+
+.hero {
+  min-height: 590px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 45px 15px 75px;
+  perspective: 1000px;
+}
+
+.hero-inner {
+  max-width: 850px;
+  animation: heroIn 1.2s ease both;
+}
+
+@keyframes heroIn {
+  from { opacity: 0; transform: translateY(35px) rotateX(8deg); }
+  to { opacity: 1; transform: translateY(0) rotateX(0); }
+}
+
+.hero-label {
+  color: var(--gold);
+  letter-spacing: 5px;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  font: 600 clamp(55px,11vw,105px)/.95 'Cormorant Garamond',serif;
+  margin: 25px 0 15px;
+  text-shadow: 0 0 45px #e9c67535;
+}
+
+.hero h2 {
+  font: 500 clamp(22px,4vw,34px) 'Cormorant Garamond',serif;
+  color: #fff3d8;
+  margin: 15px 0;
+}
+
+.hero p {
+  color: #c9c0b2;
+  font-size: 14px;
+  line-height: 1.9;
+  max-width: 570px;
+  margin: 12px auto 24px;
+}
+
+.hero-cake {
+  font-size: clamp(75px,12vw,115px);
+  margin: 20px 0;
+  display: inline-block;
+  filter: drop-shadow(0 15px 25px #d5a64b40);
+  animation: cakeFloat 3s ease-in-out infinite;
+}
+
+@keyframes cakeFloat {
+  0%,100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-15px) rotate(2deg); }
+}
+
+.hero-line {
+  height: 1px;
+  width: 150px;
+  margin: 25px auto;
+  background: linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+
+/* LETTER */
+
+.letter-card {
+  max-width: 760px;
+  margin: auto;
+  padding: 35px;
+  text-align: center;
+}
+
+.letter-icon {
+  font-size: 45px;
+  filter: drop-shadow(0 5px 15px #e9c67550);
+}
+
+.letter-card h3 {
+  font: 600 29px 'Cormorant Garamond',serif;
+  color: var(--gold-light);
+}
+
+.letter-text {
+  display: none;
+  white-space: pre-wrap;
+  text-align: left;
+  line-height: 2;
+  font-size: 14px;
+  color: #eee1c9;
+  padding: 22px;
+  margin-top: 25px;
+  border-top: 1px solid var(--border);
+}
+
+/* PHOTOS */
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(190px,1fr));
+  gap: 18px;
+}
+
+.gallery img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 17px;
+  border: 1px solid #e9c67555;
+  box-shadow: 0 10px 30px #0008;
+  transition: .4s;
+}
+
+.gallery img:hover {
+  transform: translateY(-7px) scale(1.025);
+  box-shadow: 0 15px 40px #d3a54b35;
+}
+
+.empty-gallery {
+  grid-column: 1/-1;
+  padding: 40px;
+  text-align: center;
+  color: var(--muted);
+  border: 1px dashed var(--border);
+  border-radius: 18px;
+}
+
+/* GAMES */
+
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap: 18px;
+}
+
+.game-card {
+  padding: 27px 22px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: .35s;
+}
+
+.game-card::before {
+  content: "";
+  position: absolute;
+  top: -80px;
+  left: -70px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: #d9ac5730;
+  filter: blur(30px);
+}
+
+.game-card:hover {
+  transform: translateY(-8px) rotateX(3deg);
+  border-color: #e9c67588;
+}
+
+.game-icon {
+  font-size: 48px;
+  filter: drop-shadow(0 5px 15px #e9c67555);
+}
+
+.game-card h3 {
+  color: var(--gold-light);
+  font: 600 25px 'Cormorant Garamond',serif;
+}
+
+.game-card p {
+  color: #bdb4a7;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.game-card button {
+  margin-top: 10px;
+}
+
+/* GAME PANELS */
+
+.game-panel {
+  display: none;
+  padding: 30px;
+  max-width: 780px;
+  margin: 30px auto 0;
+  text-align: center;
+  animation: panelIn .4s ease;
+}
+
+@keyframes panelIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.game-panel h3 {
+  color: var(--gold-light);
+  font: 600 30px 'Cormorant Garamond',serif;
+}
+
+.game-panel p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.result {
+  white-space: pre-wrap;
+  padding: 22px;
+  margin: 22px 0;
+  border-radius: 15px;
+  color: #fff0d1;
+  line-height: 1.9;
+  background: linear-gradient(135deg,#d3a54b12,#ffffff08);
+  border: 1px solid var(--border);
+}
+
+.big-emoji {
+  font-size: 75px;
+  margin: 15px;
+  filter: drop-shadow(0 8px 20px #e9c67545);
+}
+
+#spinButton:disabled {
+  opacity: .6;
+  cursor: wait;
+}
+
+/* QUIZ */
+
+.quiz-question {
+  text-align: left;
+  padding: 17px 0;
+  border-bottom: 1px solid #e9c67520;
+}
+
+.quiz-question label {
+  color: var(--gold-light);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.quiz-question input {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  padding: 13px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  color: white;
+  background: #ffffff09;
+  outline: none;
+}
+
+.quiz-question input::placeholder { color: #968c7b; }
+
+#diaryAnswers {
+  text-align: left;
+  line-height: 1.9;
+}
+
+.diary-entry {
+  padding: 13px 0;
+  border-bottom: 1px solid #e9c67522;
+}
+
+.diary-entry strong {
+  color: var(--gold-light);
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* WISH */
+
+.wish-card {
+  max-width: 650px;
+  margin: auto;
+  text-align: center;
+  padding: 32px;
+}
+
+.wish-card input {
+  width: min(100%,420px);
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: #ffffff09;
+  color: white;
+  outline: none;
+  margin: 15px 0;
+}
+
+.wish-card input::placeholder { color: #a99b87; }
+
+/* MUSIC */
+
+.music-card {
+  max-width: 650px;
+  margin: auto;
+  padding: 32px;
+  text-align: center;
+}
+
+.music-disc {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  margin: 10px auto 22px;
+  font-size: 42px;
+  background: radial-gradient(circle,#42301a,#17120d 65%,#08080c);
+  border: 4px solid #d7b260;
+  box-shadow: 0 0 35px #d5a64b30;
+}
+
+.music-disc.playing { animation: discSpin 5s linear infinite; }
+
+@keyframes discSpin { to { transform: rotate(360deg); } }
+
+.music-card select {
+  width: min(100%,370px);
+  display: block;
+  margin: 15px auto;
+  padding: 13px;
+  background: #1d1710;
+  color: var(--gold-light);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.music-note {
+  color: #a99f90;
+  font-size: 11px;
+  line-height: 1.8;
+}
+
+/* FOOTER */
+
+footer {
+  text-align: center;
+  padding: 55px 15px 35px;
+  color: #9f9586;
+  font-size: 12px;
+  line-height: 2;
+}
+
+footer strong {
+  display: block;
+  color: var(--gold);
+  letter-spacing: 4px;
+  font: 700 23px 'Cormorant Garamond',serif;
+}
+
+.footer-line {
+  height: 1px;
+  width: min(400px,80%);
+  margin: auto auto 25px;
+  background: linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+
+/* BALLOONS + CONFETTI */
+
+.balloon {
+  position: fixed;
+  bottom: -100px;
+  z-index: 8;
+  font-size: 32px;
+  pointer-events: none;
+  animation: balloonUp 9s linear forwards;
+}
+
+@keyframes balloonUp {
+  to { transform: translateY(-120vh) rotate(22deg); opacity: 0; }
+}
+
+.confetti {
+  position: fixed;
+  top: -15px;
+  width: 8px;
+  height: 13px;
+  z-index: 12;
+  pointer-events: none;
+  animation: confettiFall 4s linear forwards;
+}
+
+@keyframes confettiFall {
+  to { transform: translateY(110vh) rotate(700deg); opacity: 0; }
+}
+
+#toast {
+  position: fixed;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 30;
+  display: none;
+  max-width: 90%;
+  padding: 13px 22px;
+  border-radius: 30px;
+  background: linear-gradient(120deg,#a87931,#ffe2a0);
+  color: #1b1207;
+  text-align: center;
+  font-size: 12px;
+  box-shadow: 0 5px 25px #0008;
+}
+
+@media(max-width:600px) {
+  nav { padding: 18px 0; }
+  .hero { min-height: 510px; }
+  .section { padding-top: 55px; }
+  .letter-card,.game-panel,.wish-card,.music-card { padding: 22px 17px; }
+  .gallery img { height: 205px; }
+  .game-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="background">
+  <div class="glow one"></div>
+  <div class="glow two"></div>
+  <div class="glow three"></div>
+</div>
+
+<div id="particles"></div>
+
+<nav>
+  <div class="brand">JR--WISHES ✦</div>
+  <div class="nav-tag">A LUXURY BIRTHDAY EXPERIENCE</div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-label">✦ A Special Day • A Special Person ✦</div>
+    <h1 class="gold-text">Happy Birthday</h1>
+    <h2 id="birthdayName">Someone Special</h2>
+    <div class="hero-line"></div>
+    <p id="headline">Aaj ka din sirf tumhare naam. May your day be filled with happiness, beautiful memories and endless smiles.</p>
+    <div class="hero-cake">🎂</div>
+    <br>
+    <button class="gold-btn" onclick="startCelebration()">✦ Begin Celebration ✦</button>
+    <div style="color:#a99b87;font-size:10px;letter-spacing:3px;margin-top:28px">
+      SCROLL TO EXPLORE YOUR SURPRISE
+    </div>
+  </div>
+</header>
+
+<!-- LETTER -->
+<section class="section container">
+  <div class="section-heading">
+    <div class="small">A message from the heart</div>
+    <h2 class="gold-text">A Letter For You</h2>
+    <p>Kuch words jo tumhare special day ko aur bhi special banayein.</p>
+  </div>
+
+  <div class="glass-card letter-card">
+    <div class="letter-icon">💌</div>
+    <h3>To Someone Special</h3>
+    <p style="color:#b9ad9b;font-size:12px">A little message, wrapped with love.</p>
+    <button class="gold-btn" onclick="revealLetter()">Open Your Letter</button>
+    <div class="letter-text" id="letterText"></div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="section container">
+  <div class="section-heading">
+    <div class="small">Moments worth remembering</div>
+    <h2 class="gold-text">Beautiful Memories</h2>
+    <p>Har photo ek kahani, har memory ek special feeling. 📸</p>
+  </div>
+
+  <div class="gallery" id="photoGallery">
+    <div class="empty-gallery">✨ Your special photos will appear here ✨</div>
+  </div>
+</section>
+
+<!-- GAMES -->
+<section class="section container">
+  <div class="section-heading">
+    <div class="small">Let the fun begin</div>
+    <h2 class="gold-text">The Birthday Fun Zone</h2>
+    <p>Three little surprises, unlimited smiles.</p>
+  </div>
+
+  <div class="game-grid">
+    <div class="glass-card game-card">
+      <div class="game-icon">🎁</div>
+      <h3>Mystery Gift</h3>
+      <p>Ek secret surprise tumhara intezaar kar raha hai.</p>
+      <button class="gold-btn" onclick="openGame('gift')">Reveal Gift</button>
+    </div>
+
+    <div class="glass-card game-card">
+      <div class="game-icon">🎡</div>
+      <h3>Lucky Spin</h3>
+      <p>Spin karo aur pao ek funny birthday dare.</p>
+      <button class="gold-btn" onclick="openGame('spin')">Spin Now</button>
+    </div>
+
+    <div class="glass-card game-card">
+      <div class="game-icon">📖</div>
+      <h3>Birthday Quiz</h3>
+      <p>Apne birthday ke special moments yaad karo.</p>
+      <button class="gold-btn" onclick="openGame('quiz')">Start Quiz</button>
+    </div>
+  </div>
+
+  <!-- GIFT -->
+  <div class="glass-card game-panel" id="giftPanel">
+    <h3>🎁 Mystery Gift Box</h3>
+    <p>Close your eyes, make a wish and reveal your surprise!</p>
+    <div class="big-emoji" id="giftEmoji">🎁</div>
+    <div class="result" id="giftResult">Your surprise is waiting...</div>
+    <button class="gold-btn" onclick="revealGift()">Open My Gift</button>
+    <br>
+    <button class="outline-btn" onclick="closeGames()">Close</button>
+  </div>
+
+  <!-- SPIN -->
+  <div class="glass-card game-panel" id="spinPanel">
+    <h3>🎡 The Lucky Dare Wheel</h3>
+    <p>Let's see what your birthday luck has planned!</p>
+    <div class="big-emoji" id="wheel">🎡</div>
+    <div class="result" id="spinResult">Your special dare will appear here.</div>
+    <button class="gold-btn" id="spinButton" onclick="runSpin()">SPIN THE WHEEL</button>
+    <br>
+    <button class="outline-btn" onclick="skipDare()">Skip / Re-spin</button>
+    <button class="outline-btn" onclick="closeGames()">Close</button>
+    <p class="music-note">All dares are optional. Skip anything you are not comfortable doing.</p>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="glass-card game-panel" id="quizPanel">
+    <h3>📖 Your Birthday Diary</h3>
+    <p>There are no wrong answers. Just your memories and feelings.</p>
+
+    <form id="quizForm">
+      <div id="quizQuestions"></div>
+      <button class="gold-btn" type="submit">Save My Birthday Diary</button>
+    </form>
+
+    <div id="diaryBox" style="display:none">
+      <div class="result" id="diaryAnswers"></div>
+      <button class="gold-btn" onclick="resetQuiz()">Play Again</button>
+    </div>
+
+    <button class="outline-btn" onclick="closeGames()">Close</button>
+  </div>
+</section>
+
+<!-- WISH -->
+<section class="section container">
+  <div class="section-heading">
+    <div class="small">A little wish for the future</div>
+    <h2 class="gold-text">Make A Wish ✨</h2>
+    <p>Ek wish maango, aur apne dreams ki taraf ek kadam badhao.</p>
+  </div>
+
+  <div class="glass-card wish-card">
+    <div class="big-emoji">🌟</div>
+    <input id="wishInput" type="text" maxlength="250" placeholder="Write your birthday wish...">
+    <br>
+    <button class="gold-btn" onclick="makeWish()">Send My Wish ✦</button>
+    <p id="wishMessage" style="color:var(--gold-light);font-size:13px"></p>
+  </div>
+</section>
+
+<!-- MUSIC -->
+<section class="section container">
+  <div class="section-heading">
+    <div class="small">A melody for your day</div>
+    <h2 class="gold-text">Birthday Music</h2>
+    <p>Let the celebration have its own melody. 🎶</p>
+  </div>
+
+  <div class="glass-card music-card">
+    <div class="music-disc" id="musicDisc">♫</div>
+    <h3 class="gold-text" style="font:600 27px 'Cormorant Garamond',serif">Your Birthday Melody</h3>
+    <select id="musicSelect">
+      <option value="tune1">Janamdin Ki Khushiyan – Hindi Tune</option>
+      <option value="tune2">Aaj Ka Din Hai Special – Hindi Tune</option>
+    </select>
+    <button class="gold-btn" id="musicButton" onclick="toggleMusic()">▶ Play Music</button>
+    <p class="music-note">
+      Original birthday-style Hindi instrumental melodies, generated in your browser.
+      Press Play to start the music.
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-line"></div>
+  Created with love and golden wishes.
+  <strong>JR--WISHES</strong>
+  Every birthday deserves a little magic. ✦
+</footer>
+
+<div id="toast"></div>
+
+<script>
+/* =================================
+   PERSONALIZED DATA
+================================= */
+
+let savedData = null;
+
+try {
+  savedData = JSON.parse(localStorage.getItem("jrBirthdayData") || "null");
+} catch (error) {
+  savedData = null;
+}
+
+const birthdayData = savedData || {};
+
+const receiver = birthdayData.receiver || "Someone Special";
+const sender = birthdayData.sender || "Someone who cares";
+const headline = birthdayData.headline || "Aaj ka din sirf tumhare naam!";
+const message = birthdayData.message ||
+  "Tumhari life khushiyon, pyaar aur beautiful memories se bhari rahe. Happy Birthday! 💛";
+
+document.getElementById("birthdayName").textContent = receiver;
+document.getElementById("headline").textContent = headline;
+
+document.getElementById("letterText").textContent =
+  message + "\n\nWith lots of love,\n" + sender;
+
+/* =================================
+   PHOTO GALLERY
+================================= */
+
+const gallery = document.getElementById("photoGallery");
+const photos = Array.isArray(birthdayData.photos) ? birthdayData.photos : [];
+
+if (photos.length) {
+  gallery.innerHTML = "";
+
+  photos.forEach(photo => {
+    if (typeof photo !== "string") return;
+
+    const img = document.createElement("img");
+    img.src = photo;
+    img.alt = "Birthday memory";
+    img.loading = "lazy";
+    gallery.appendChild(img);
+  });
+
+  if (!gallery.children.length) {
+    gallery.innerHTML = '<div class="empty-gallery">Your special photos will appear here ✨</div>';
+  }
+}
+
+/* =================================
+   BACKGROUND PARTICLES
+================================= */
+
+const particleArea = document.getElementById("particles");
+
+for (let i = 0; i < 35; i++) {
+  const particle = document.createElement("span");
+  particle.className = "particle";
+  particle.style.left = Math.random() * 100 + "%";
+  particle.style.animationDuration = (7 + Math.random() * 13) + "s";
+  particle.style.animationDelay = (-Math.random() * 15) + "s";
+  particle.style.opacity = Math.random() * .8;
+  particleArea.appendChild(particle);
+}
+
+/* =================================
+   TOAST
+================================= */
+
+function showToast(message) {
+  const toast = document.getElementById("toast");
+  toast.textContent = message;
+  toast.style.display = "block";
+
+  clearTimeout(window.toastTimer);
+
+  window.toastTimer = setTimeout(() => {
+    toast.style.display = "none";
+  }, 2800);
+}
+
+/* =================================
+   CONFETTI AND BALLOONS
+================================= */
+
+function createConfetti() {
+  for (let i = 0; i < 100; i++) {
+    const piece = document.createElement("div");
+    piece.className = "confetti";
+    piece.style.left = Math.random() * 100 + "vw";
+    piece.style.background = [
+      "#f5cf75", "#ffdf9c", "#fff0c7", "#b98b3d"
+    ][Math.floor(Math.random() * 4)];
+    piece.style.animationDelay = Math.random() * 1.5 + "s";
+
+    document.body.appendChild(piece);
+
+    setTimeout(() => piece.remove(), 5500);
+  }
+}
+
+function createBalloon() {
+  const balloon = document.createElement("div");
+  balloon.className = "balloon";
+  balloon.textContent = ["🎈", "✨", "🎈", "💛"][Math.floor(Math.random() * 4)];
+  balloon.style.left = Math.random() * 95 + "vw";
+
+  document.body.appendChild(balloon);
+
+  setTimeout(() => balloon.remove(), 9500);
+}
+
+function startCelebration() {
+  createConfetti();
+
+  for (let i = 0; i < 14; i++) {
+    setTimeout(createBalloon, i * 180);
+  }
+
+  showToast("Happy Birthday, " + receiver + "! 🎂");
+}
+
+setInterval(createBalloon, 3500);
+
+/* =================================
+   LETTER
+================================= */
+
+function revealLetter() {
+  document.getElementById("letterText").style.display = "block";
+  createConfetti();
+  showToast("A special letter, just for you 💌");
+}
+
+/* =================================
+   GAME NAVIGATION
+================================= */
+
+function closeGames() {
+  document.querySelectorAll(".game-panel").forEach(panel => {
+    panel.style.display = "none";
+  });
+}
+
+function openGame(game) {
+  closeGames();
+
+  const panel = document.getElementById(game + "Panel");
+
+  if (panel) {
+    panel.style.display = "block";
+    panel.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+
+  if (game === "quiz") {
+    document.getElementById("quizForm").style.display = "block";
+    document.getElementById("diaryBox").style.display = "none";
+  }
+}
+
+/* =================================
+   MYSTERY GIFT
+================================= */
+
+const gifts = [
+  "🍫 A chocolate treat is waiting for you!",
+  "💐 A beautiful bouquet and lots of wishes!",
+  "🎬 A movie plan with your favourite person!",
+  "🍦 An ice cream treat is coming your way!",
+  "💌 A handwritten birthday note!",
+  "🎉 A surprise celebration with your favourite people!",
+  "📸 A fun photo session and beautiful memories!",
+  "⭐ A day full of smiles and laughter!",
+  "🎁 A little surprise chosen just for you!"
+];
+
+function revealGift() {
+  const gift = gifts[Math.floor(Math.random() * gifts.length)];
+
+  document.getElementById("giftEmoji").textContent = "✨🎁✨";
+  document.getElementById("giftResult").textContent = gift;
+
+  createConfetti();
+}
+
+/* =================================
+   LUCKY SPIN - DARes
+================================= */
+
+const spinDares = [
+  "Aaj kisi ko apne haathon se golgappe khilane honge! 😋",
+  "Apne favourite person ke saath kisi achhi jagah ghoomne ka plan banao! 🌸",
+  "Saath mein film dekhne ka plan banana hoga! 🍿",
+  "Restaurant mein ek chhoti si party dene ka promise karo! 🍕",
+  "Apni life ki koi funny ya memorable story share karo, sirf agar comfortable ho! 😂",
+  "Ek funny song gaakar sunao! 🎤",
+  "30 seconds ka funny dance karke dikhao! 💃",
+  "Kisi ko ek pyara sa handwritten note dena hoga! 💌",
+  "Apne favourite person ko ek genuine compliment do! 💗",
+  "Kisi ko ice cream treat dene ka plan banao! 🍦",
+  "Apni sabse funny memory share karo! 🤣",
+  "Ek funny selfie lekar apni favourite memory banao! 📸",
+  "Kisi ki favourite chocolate gift karne ka plan banao! 🍫",
+  "Apne favourite movie character ki mimicry karo! 🎭",
+  "Apna favourite birthday song gaakar sunao! 🎶",
+  "Kisi ko ek cute sa nickname do! 😄",
+  "Apne favourite person ke liye ek chhota sa surprise plan karo! 🎁",
+  "Kisi ko apni taraf se ek special thank-you message bhejo! 💛",
+  "Apne agle fun day-out ki destination choose karo! 🗺️",
+  "Ek minute tak bina hase serious face banakar dikhao! 😐",
+  "Apni favourite childhood memory share karo! 🌈",
+  "Kisi ke liye ek funny poem ya shayari banao! ✍️",
+  "Apne favourite snacks share karne ka plan banao! 🍟",
+  "Kisi ko ek cute sa birthday wish voice note bhejo! 🎙️"
+];
+
+let lastDareIndexes = [];
+
+function getNewDare() {
+  let available = spinDares
+    .map((dare, index) => index)
+    .filter(index => !lastDareIndexes.includes(index));
+
+  if (!available.length) {
+    lastDareIndexes = [];
+    available = spinDares.map((dare, index) => index);
+  }
+
+  const selected = available[Math.floor(Math.random() * available.length)];
+
+  lastDareIndexes.push(selected);
+
+  if (lastDareIndexes.length > 8) {
+    lastDareIndexes.shift();
+  }
+
+  return spinDares[selected];
+}
+
+function runSpin() {
+  const button = document.getElementById("spinButton");
+  const wheel = document.getElementById("wheel");
+  const result = document.getElementById("spinResult");
+
+  if (button.disabled) return;
+
+  button.disabled = true;
+  button.textContent = "SPINNING...";
+  result.textContent = "Your lucky dare is on its way... ✨";
+
+  wheel.style.transition = "transform 2s ease-out";
+  wheel.style.transform = "rotate(1080deg)";
+
+  setTimeout(() => {
+    const first = getNewDare();
+    let finalDare = "🎯 YOUR DARE:\n" + first;
+
+    if (Math.random() < 0.28) {
+      finalDare += "\n\n🎊 DOUBLE DARE!\n" + getNewDare();
+    }
+
+    result.textContent = finalDare;
+
+    button.disabled = false;
+    button.textContent = "SPIN AGAIN";
+
+    wheel.style.transition = "none";
+    wheel.style.transform = "rotate(0deg)";
+
+    createConfetti();
+  }, 2100);
+}
+
+function skipDare() {
+  document.getElementById("spinResult").textContent = "Let's find a new dare! ✨";
+  runSpin();
+}
+
+/* =================================
+   BIRTHDAY QUIZ
+================================= */
+
+const questions = [
+  "Aaj ka din tumhare liye kaisa raha?",
+  "Aaj ka sabse favourite moment kya tha?",
+  "Aaj tum sabse zyada kis se milna chahte the?",
+  "Abhi tumhara kahaan ghoomne jaane ka mann hai?",
+  "Birthday par sabse special cheez kya lagi?",
+  "Aaj tumne sabse zyada enjoy kya kiya?",
+  "Agar abhi ek wish maang sakte, toh kya maangte?",
+  "Next birthday tak kaunsa dream poora karna chahte ho?",
+  "Aaj ke birthday ko 1 se 10 tak kitne marks doge?"
+];
+
+const questionBox = document.getElementById("quizQuestions");
+
+questions.forEach((question, index) => {
+  const wrapper = document.createElement("div");
+  wrapper.className = "quiz-question";
+
+  const label = document.createElement("label");
+  label.textContent = (index + 1) + ". " + question;
+
+  const input = document.createElement("input");
+  input.type = "text";
+  input.name = "question" + index;
+  input.placeholder = "Write your answer...";
+  input.maxLength = 300;
+
+  wrapper.appendChild(label);
+  wrapper.appendChild(input);
+  questionBox.appendChild(wrapper);
+});
+
+document.getElementById("quizForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const inputs = questionBox.querySelectorAll("input");
+  const diary = document.getElementById("diaryAnswers");
+
+  diary.innerHTML = "";
+
+  inputs.forEach((input, index) => {
+    const entry = document.createElement("div");
+    entry.className = "diary-entry";
+
+    const question = document.createElement("strong");
+    question.textContent = questions[index];
+
+    const answer = document.createElement("div");
+    answer.textContent = input.value.trim() || "No answer written";
+
+    entry.appendChild(question);
+    entry.appendChild(answer);
+    diary.appendChild(entry);
+  });
+
+  document.getElementById("quizForm").style.display = "none";
+  document.getElementById("diaryBox").style.display = "block";
+
+  showToast("Your Birthday Diary is ready! 📖");
+});
+
+function resetQuiz() {
+  document.getElementById("quizForm").reset();
+  document.getElementById("quizForm").style.display = "block";
+  document.getElementById("diaryBox").style.display = "none";
+}
+
+/* =================================
+   MAKE A WISH
+================================= */
+
+function makeWish() {
+  const input = document.getElementById("wishInput");
+  const message = document.getElementById("wishMessage");
+
+  if (!input.value.trim()) {
+    showToast("Pehle apni wish likho! ⭐");
+    return;
+  }
+
+  message.textContent = "✨ Your wish has been made. May your dreams come true! 💛";
+  input.value = "";
+
+  createConfetti();
+}
+
+/* =================================
+   HINDI BIRTHDAY MUSIC
+   Original tunes using Web Audio API
+================================= */
+
+let audioContext = null;
+let musicTimer = null;
+let musicPlaying = false;
+let noteIndex = 0;
+let activeOscillators = [];
+
+const tunes = {
+  tune1: [
+    392,392,440,392,523,494,
+    392,392,440,392,587,523,
+    392,392,784,659,523,494,440,
+    698,698,659,523,587,523
+  ],
+
+  tune2: [
+    523,587,659,784,659,587,
+    523,440,494,523,587,659,
+    784,880,784,659,587,523,
+    440,494,523,587,523,494
+  ]
+};
+
+function playNote(frequency) {
+  if (!audioContext || !musicPlaying) return;
+
+  const oscillator = audioContext.createOscillator();
+  const gain = audioContext.createGain();
+
+  oscillator.type = "sine";
+  oscillator.frequency.value = frequency;
+
+  gain.gain.setValueAtTime(.0001, audioContext.currentTime);
+  gain.gain.exponentialRampToValueAtTime(.11, audioContext.currentTime + .04);
+  gain.gain.exponentialRampToValueAtTime(.0001, audioContext.currentTime + .36);
+
+  oscillator.connect(gain);
+  gain.connect(audioContext.destination);
+
+  oscillator.start();
+  oscillator.stop(audioContext.currentTime + .38);
+
+  activeOscillators.push(oscillator);
+
+  oscillator.onended = () => {
+    activeOscillators = activeOscillators.filter(item => item !== oscillator);
+  };
+}
+
+function stopMusic() {
+  if (musicTimer) {
+    clearInterval(musicTimer);
+    musicTimer = null;
+  }
+
+  musicPlaying = false;
+
+  document.getElementById("musicButton").textContent = "▶ Play Music";
+  document.getElementById("musicDisc").classList.remove("playing");
+}
+
+async function startMusic() {
+  const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+
+  if (!AudioContextClass) {
+    showToast("Your browser does not support this music player.");
+    return;
+  }
+
+  try {
+    if (!audioContext) {
+      audioContext = new AudioContextClass();
+    }
+
+    if (audioContext.state === "suspended") {
+      await audioContext.resume();
+    }
+
+    const selectedTune = document.getElementById("musicSelect").value;
+    const melody = tunes[selectedTune];
+
+    noteIndex = 0;
+    musicPlaying = true;
+
+    playNote(melody[noteIndex]);
+    noteIndex++;
+
+    musicTimer = setInterval(() => {
+      if (!musicPlaying) return;
+
+      playNote(melody[noteIndex]);
+
+      noteIndex = (noteIndex + 1) % melody.length;
+    }, 380);
+
+    document.getElementById("musicButton").textContent = "⏸ Pause Music";
+    document.getElementById("musicDisc").classList.add("playing");
+
+    showToast("Your birthday melody is playing! 🎵");
+
+  } catch (error) {
+    stopMusic();
+    showToast("Music start nahi ho paya. Dobara Play dabao.");
+  }
+}
+
+function toggleMusic() {
+  if (musicPlaying) {
+    stopMusic();
+  } else {
+    startMusic();
+  }
+}
+
+document.getElementById("musicSelect").addEventListener("change", () => {
+  if (musicPlaying) {
+    stopMusic();
+    startMusic();
+  }
+});
+
+window.addEventListener("beforeunload", stopMusic);
+
+/* =================================
+   OPTIONAL BIRTHDAY COUNTDOWN
+================================= */
+
+if (birthdayData.date) {
+  const birthdayDate = new Date(birthdayData.date + "T00:00:00");
+  const today = new Date();
+
+  today.setHours(0,0,0,0);
+
+  if (!isNaN(birthdayDate.getTime()) && birthdayDate > today) {
+    const days = Math.ceil((birthdayDate - today) / 86400000);
+
+    document.getElementById("headline").textContent =
+      headline + " ✦ " + days + " days to go!";
+  }
+}
+</script>
+
+</body>
+</html>

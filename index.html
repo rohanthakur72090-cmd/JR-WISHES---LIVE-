@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#fff5f8">
+<title>JR--WISHES — Make Every Birthday Special</title>
+<style>
+:root{--pink:#f26f9b;--pink-dark:#d94d7e;--ink:#302332;--muted:#766b78;--cream:#fff8f5;--lav:#f2edff;--line:#f2dce5;--white:#fff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:linear-gradient(180deg,#fff8fa 0%,#fff 55%,#fff8f5 100%)}button,input,textarea,select{font:inherit}button{cursor:pointer}
+.wrap{width:min(1120px,calc(100% - 40px));margin:auto}.nav{height:76px;display:flex;align-items:center;justify-content:space-between}.brand{font-size:24px;font-weight:850;letter-spacing:-1px;color:var(--ink);text-decoration:none}.brand span{color:var(--pink-dark)}.navlinks{display:flex;align-items:center;gap:25px}.navlinks a{color:var(--muted);font-size:14px;text-decoration:none}.btn{border:0;border-radius:999px;padding:13px 21px;background:var(--pink);color:white;font-weight:750;box-shadow:0 8px 20px #f26f9b35;transition:.2s}.btn:hover{transform:translateY(-2px);background:var(--pink-dark)}.btn.secondary{background:white;color:var(--pink-dark);border:1px solid var(--line);box-shadow:none}.hero{padding:66px 0 55px;display:grid;grid-template-columns:1.08fr .92fr;gap:40px;align-items:center}.eyebrow{display:inline-flex;gap:8px;align-items:center;padding:8px 13px;border:1px solid var(--line);border-radius:99px;background:white;color:var(--pink-dark);font-size:12px;font-weight:800;letter-spacing:.4px}.hero h1{font-size:clamp(42px,6vw,68px);line-height:1.04;letter-spacing:-3px;margin:20px 0 17px}.hero h1 em{font-style:normal;color:var(--pink-dark)}.hero p{font-size:17px;line-height:1.7;color:var(--muted);max-width:520px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:27px}.trust{display:flex;gap:17px;flex-wrap:wrap;margin-top:24px;color:var(--muted);font-size:12px}.trust span{display:flex;align-items:center;gap:6px}.art{min-height:390px;position:relative;display:grid;place-items:center}.glow{position:absolute;width:330px;height:330px;border-radius:50%;background:radial-gradient(circle,#ffe0eb,#f5eaff 65%,transparent 70%)}.cake-card{position:relative;width:min(330px,90%);padding:28px 25px 25px;background:#fff;border:1px solid #f8dce7;border-radius:28px;box-shadow:0 25px 70px #d8759d25;text-align:center;transform:rotate(2deg)}.cake{font-size:108px;line-height:1.2;filter:drop-shadow(0 9px 8px #eaa0b544)}.cake-card h3{margin:8px 0 5px;font-size:20px}.cake-card p{font-size:13px;color:var(--muted);margin:0}.float{position:absolute;background:#fff;border:1px solid var(--line);border-radius:17px;padding:12px 15px;box-shadow:0 12px 30px #b96b8a20;font-size:13px;font-weight:750}.f1{top:45px;right:0}.f2{bottom:45px;left:0}.section{padding:60px 0}.section-head{text-align:center;max-width:650px;margin:0 auto 32px}.section-head h2{font-size:clamp(29px,4vw,42px);letter-spacing:-1.4px;margin:0 0 10px}.section-head p{color:var(--muted);line-height:1.6;margin:0}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}.feature{background:#fff;border:1px solid var(--line);border-radius:21px;padding:22px;min-height:170px;box-shadow:0 8px 25px #8c53600a}.ico{width:47px;height:47px;border-radius:15px;background:#fff0f5;display:grid;place-items:center;font-size:24px}.feature h3{margin:14px 0 7px;font-size:17px}.feature p{margin:0;color:var(--muted);font-size:13px;line-height:1.55}.games{background:linear-gradient(135deg,#fff1f6,#f8f3ff);border-top:1px solid #f7e4ec;border-bottom:1px solid #f7e4ec}.game-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.game{background:#fff;border:1px solid #f1deeb;border-radius:18px;padding:18px;display:flex;gap:13px;align-items:center}.game .emoji{font-size:31px}.game b{display:block;font-size:14px}.game small{color:var(--muted);font-size:12px}.cta{margin:58px auto 75px;background:#352738;color:#fff;border-radius:28px;padding:42px;text-align:center;position:relative;overflow:hidden}.cta h2{font-size:clamp(28px,4vw,40px);margin:0 0 10px;letter-spacing:-1px}.cta p{color:#e7dce7;margin:0 0 22px}.footer{padding:25px 0 35px;border-top:1px solid var(--line);color:var(--muted);font-size:12px;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.modal{position:fixed;inset:0;background:#24172499;display:none;align-items:center;justify-content:center;padding:18px;z-index:5}.modal.show{display:flex}.dialog{background:#fff;width:min(620px,100%);max-height:92vh;overflow:auto;border-radius:25px;padding:26px;box-shadow:0 25px 80px #0003}.dialog-top{display:flex;justify-content:space-between;align-items:center;gap:15px}.dialog h2{margin:0;font-size:25px}.close{border:0;background:#f8edf2;border-radius:50%;width:37px;height:37px;font-size:20px;color:var(--ink)}.hint{font-size:13px;color:var(--muted);line-height:1.5}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}.field label{font-size:13px;font-weight:750}.field input,.field textarea,.field select{width:100%;border:1px solid var(--line);border-radius:12px;padding:12px;background:#fffafd;outline:none;color:var(--ink)}.field textarea{min-height:85px;resize:vertical}.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--pink)}.modal-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:20px}.notice{margin-top:15px;padding:12px 14px;background:#fff5e8;border:1px solid #f6e4c7;border-radius:12px;color:#765b32;font-size:12px;line-height:1.5}
+@media(max-width:760px){.navlinks a:not(.btn){display:none}.hero{grid-template-columns:1fr;padding-top:40px;gap:8px}.hero h1{letter-spacing:-2px}.art{min-height:330px}.glow{width:280px;height:280px}.grid,.game-grid{grid-template-columns:1fr 1fr}.section{padding:45px 0}.cta{padding:32px 20px}.f1{right:2px}.f2{left:2px}}
+@media(max-width:480px){.wrap{width:min(100% - 28px,1120px)}.grid,.game-grid{grid-template-columns:1fr}.hero p{font-size:15px}.cake{font-size:90px}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.nav{height:66px}.brand{font-size:22px}}
+</style>
+</head>
+<body>
+<header class="wrap nav">
+  <a class="brand" href="#">JR--WISHES | 🅙🅡 |</a>
+  <nav class="navlinks"><a href="#features">Features</a><a href="#games">Games</a><button class="btn" onclick="openCreator()">Create surprise</button></nav>
+</header>
+<main>
+<section class="wrap hero">
+  <div>
+    <div class="eyebrow">🎀 MAKE THEIR DAY UNFORGETTABLE</div>
+    <h1>A little surprise.<br><em>A lifetime memory.</em></h1>
+    <p>Create a beautiful birthday experience with photos, heartfelt messages, playful games and fun surprises — then share it with one special link.</p>
+    <div class="actions"><button class="btn" onclick="openCreator()">Create a free surprise →</button><a class="btn secondary" href="#games" style="text-decoration:none;display:inline-flex;align-items:center">Explore games</a></div>
+    <div class="trust"><span>✓ No signup</span><span>✓ Free to create</span><span>✓ Made for mobile</span></div>
+  </div>
+  <div class="art" aria-label="Birthday cake illustration">
+    <div class="glow"></div><div class="cake-card"><div class="cake">🎂</div><h3>Make a wish come true</h3><p>A surprise made just for someone special</p></div>
+    <div class="float f1">🎈 A little bit of magic</div><div class="float f2">💌 Made with love</div>
+  </div>
+</section>
+<section class="section" id="features"><div class="wrap">
+  <div class="section-head"><h2>Everything for a magical birthday</h2><p>Bring your favourite memories and thoughtful details together in one delightful surprise.</p></div>
+  <div class="grid">
+    <article class="feature"><div class="ico">📸</div><h3>Photo memories</h3><p>Build a gallery of favourite moments and meaningful memories.</p></article>
+    <article class="feature"><div class="ico">💌</div><h3>Personal birthday letter</h3><p>Add your own message, wishes and little reasons they matter.</p></article>
+    <article class="feature"><div class="ico">🎂</div><h3>Interactive cake</h3><p>Give the birthday person a fun candle-blowing moment.</p></article>
+    <article class="feature"><div class="ico">🎵</div><h3>Music & animations</h3><p>Set the mood with a soundtrack and joyful visual effects.</p></article>
+    <article class="feature"><div class="ico">📖</div><h3>Memory timeline</h3><p>Tell a story with photos, captions and special milestones.</p></article>
+    <article class="feature"><div class="ico">🔗</div><h3>One special link</h3><p>Share the finished birthday experience with friends and family.</p></article>
+  </div>
+</div></section>
+<section class="section games" id="games"><div class="wrap">
+  <div class="section-head"><h2>Let the birthday games begin!</h2><p>Little challenges, funny moments and surprises to make the celebration even more memorable.</p></div>
+  <div class="game-grid">
+    <div class="game"><span class="emoji">✨</span><div><b>Scratch & Reveal</b><small>Reveal a hidden surprise</small></div></div>
+    <div class="game"><span class="emoji">❓</span><div><b>Birthday Quiz</b><small>How well do you know them?</small></div></div>
+    <div class="game"><span class="emoji">🎁</span><div><b>Mystery Gift Box</b><small>Pick a box and unlock a gift</small></div></div>
+    <div class="game"><span class="emoji">🧠</span><div><b>Memory Match</b><small>Match favourite memories</small></div></div>
+    <div class="game"><span class="emoji">🎡</span><div><b>Spin the Wheel</b><small>Get a random birthday challenge</small></div></div>
+    <div class="game"><span class="emoji">🗺️</span><div><b>Treasure Hunt</b><small>Follow clues to the surprise</small></div></div>
+  </div>
+</div></section>
+<section class="wrap"><div class="cta"><h2>Ready to make someone feel special?</h2><p>Your next unforgettable birthday surprise starts here.</p><button class="btn" style="background:#fff;color:#c84f7c;box-shadow:none" onclick="openCreator()">Create your free surprise →</button></div></section>
+</main>
+<footer class="wrap footer"><span>© 2026 JR--WISHES · Made for happy moments</span><span>No account needed · Free to create</span></footer>
+<div class="modal" id="creator" role="dialog" aria-modal="true" aria-labelledby="dialogTitle">
+  <div class="dialog">
+    <div class="dialog-top"><h2 id="dialogTitle">Start your birthday surprise 🎀</h2><button class="close" onclick="closeCreator()" aria-label="Close">×</button></div>
+    <p class="hint">Add a few details to begin. This is the first-step preview of the creator; saving and real shareable links will be connected when the database is added.</p>
+    <form id="starterForm">
+      <div class="form-grid">
+        <div class="field"><label for="fromName">Your name</label><input id="fromName" placeholder="Who is sending the surprise?" required maxlength="50"></div>
+        <div class="field"><label for="toName">Birthday person's name</label><input id="toName" placeholder="Who is celebrating?" required maxlength="50"></div>
+        <div class="field"><label for="date">Birthday date (optional)</label><input id="date" type="date"></div>
+        <div class="field"><label for="theme">Choose a theme</label><select id="theme"><option>Sweet & Pink</option><option>Dreamy Purple</option><option>Golden Celebration</option><option>Fun & Colourful</option></select></div>
+        <div class="field full"><label for="message">A short birthday message</label><textarea id="message" placeholder="Write something lovely..." maxlength="500"></textarea></div>
+      </div>
+      <div class="notice">Prototype note: this form currently demonstrates the design only. It does not upload photos, save data or create a live public link yet.</div>
+      <div class="modal-actions"><button type="button" class="btn secondary" onclick="closeCreator()">Cancel</button><button class="btn" type="submit">Preview details</button></div>
+    </form>
+    <div id="preview" hidden style="margin-top:18px;padding:17px;border-radius:15px;background:#fff3f7">
+      <b id="previewTitle"></b><p id="previewMessage" class="hint"></p><button class="btn secondary" onclick="document.getElementById('preview').hidden=true">Edit details</button>
+    </div>
+  </div>
+</div>
+<script>
+function openCreator() {
+  window.location.href = "creator.html";
+}
+function closeCreator(){document.getElementById('creator').classList.remove('show');document.body.style.overflow=''}
+document.getElementById('creator').addEventListener('click',e=>{if(e.target.id==='creator')closeCreator()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeCreator()});
+document.getElementById('starterForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  const from=document.getElementById('fromName').value.trim();
+  const to=document.getElementById('toName').value.trim();
+  const msg=document.getElementById('message').value.trim();
+  document.getElementById('previewTitle').textContent=`A birthday surprise for ${to} 🎂`;
+  document.getElementById('previewMessage').textContent=msg||`Made with love by ${from}.`;
+  document.getElementById('preview').hidden=false;
+});
+</script>
+</body>
+</html>

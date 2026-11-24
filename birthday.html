@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -643,6 +642,52 @@ footer strong {
   .gallery img { height: 205px; }
   .game-grid { grid-template-columns: 1fr; }
 }
+
+/* SHARE BIRTHDAY */
+.share-card{
+  max-width:760px;
+  margin:auto;
+  padding:32px 24px;
+  text-align:center;
+}
+.share-card h3{
+  color:var(--gold-light);
+  font:600 31px 'Cormorant Garamond',serif;
+  margin:8px 0;
+}
+.share-card p{
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.8;
+  max-width:540px;
+  margin:10px auto 20px;
+}
+.share-actions{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:9px;
+}
+.share-actions .outline-btn{margin:0}
+.share-qr{
+  display:none;
+  width:max-content;
+  max-width:100%;
+  margin:22px auto 0;
+  padding:15px;
+  border:1px solid var(--border);
+  border-radius:16px;
+  background:#fff;
+}
+.share-qr.show{display:block}
+.share-qr img{display:block;width:190px;height:190px;max-width:100%}
+.share-qr small{display:block;color:#665b4b;margin-top:9px}
+@media(max-width:600px){
+  .share-card{padding:25px 16px}
+  .share-actions{gap:7px}
+  .share-actions .outline-btn{font-size:12px;padding:10px 14px}
+}
+
 </style>
 </head>
 
@@ -819,6 +864,34 @@ footer strong {
       Original birthday-style Hindi instrumental melodies, generated in your browser.
       Press Play to start the music.
     </p>
+  </div>
+</section>
+
+
+<!-- SHARE BIRTHDAY SURPRISE -->
+<section class="section container" id="shareBirthday">
+  <div class="section-heading">
+    <div class="small">Spread the birthday happiness</div>
+    <h2 class="gold-text">Share This Surprise ✦</h2>
+    <p>Send this birthday page to someone special and share the celebration.</p>
+  </div>
+  <div class="glass-card share-card">
+    <div class="big-emoji">💌</div>
+    <h3>Your Birthday Surprise Is Ready!</h3>
+    <p>Share this page through WhatsApp, Telegram, or any app on your device. You can also copy the page link or create a QR code.</p>
+    <div class="share-actions">
+      <button class="gold-btn" type="button" onclick="shareBirthdayWhatsApp()">WhatsApp</button>
+      <button class="outline-btn" type="button" onclick="shareBirthdayTelegram()">Telegram</button>
+      <button class="outline-btn" type="button" onclick="copyBirthdayLink()">Copy Link</button>
+      <button class="outline-btn" type="button" onclick="shareBirthdayNative()">Share Link</button>
+      <button class="outline-btn" type="button" onclick="toggleBirthdayQR()">Show QR Code</button>
+    </div>
+    <div class="share-qr" id="birthdayQRBox">
+      <img id="birthdayQRImage" alt="QR code for this birthday page">
+      <small>Scan to open this birthday page</small>
+      <button class="outline-btn" type="button" style="color:#70521f;border-color:#d9c18c;margin-top:12px" onclick="downloadBirthdayQR()">Download QR</button>
+    </div>
+    <p id="birthdayShareStatus" role="status" aria-live="polite"></p>
   </div>
 </section>
 
@@ -1346,6 +1419,87 @@ if (birthdayData.date) {
       headline + " ✦ " + days + " days to go!";
   }
 }
+
+/* =================================
+   SHARE BIRTHDAY PAGE
+================================= */
+function getBirthdayShareUrl(){
+  return window.location.href;
+}
+function setBirthdayShareStatus(message){
+  const status = document.getElementById("birthdayShareStatus");
+  if(status) status.textContent = message;
+}
+async function copyBirthdayLink(){
+  const url = getBirthdayShareUrl();
+  try{
+    await navigator.clipboard.writeText(url);
+    setBirthdayShareStatus("Birthday page link copied! Share it with love. 💛");
+    showToast("Link copied successfully! 🔗");
+  }catch(error){
+    const fallback = document.createElement("textarea");
+    fallback.value = url;
+    fallback.style.position = "fixed";
+    fallback.style.opacity = "0";
+    document.body.appendChild(fallback);
+    fallback.select();
+    try{
+      document.execCommand("copy");
+      setBirthdayShareStatus("Birthday page link copied! Share it with love. 💛");
+      showToast("Link copied successfully! 🔗");
+    }catch(copyError){
+      setBirthdayShareStatus("Copy wasn't available. Please copy the page address from your browser.");
+    }
+    fallback.remove();
+  }
+}
+function shareBirthdayWhatsApp(){
+  const url = getBirthdayShareUrl();
+  const text = "A special birthday surprise for " + receiver + "! 🎂 Open it here: " + url;
+  window.open("https://wa.me/?text=" + encodeURIComponent(text), "_blank", "noopener,noreferrer");
+}
+function shareBirthdayTelegram(){
+  const url = getBirthdayShareUrl();
+  const text = "A special birthday surprise for " + receiver + "! 🎂";
+  window.open("https://t.me/share/url?url=" + encodeURIComponent(url) + "&text=" + encodeURIComponent(text), "_blank", "noopener,noreferrer");
+}
+async function shareBirthdayNative(){
+  const url = getBirthdayShareUrl();
+  const shareData = {
+    title: "JR--WISHES | Birthday Surprise",
+    text: "A special birthday surprise for " + receiver + "! 🎂",
+    url: url
+  };
+  if(navigator.share){
+    try{
+      await navigator.share(shareData);
+    }catch(error){
+      if(error.name !== "AbortError"){
+        setBirthdayShareStatus("Sharing couldn't be opened. Try Copy Link instead.");
+      }
+    }
+  }else{
+    copyBirthdayLink();
+  }
+}
+function toggleBirthdayQR(){
+  const box = document.getElementById("birthdayQRBox");
+  const image = document.getElementById("birthdayQRImage");
+  const url = getBirthdayShareUrl();
+  image.src = "https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=" + encodeURIComponent(url);
+  box.classList.toggle("show");
+}
+function downloadBirthdayQR(){
+  const url = getBirthdayShareUrl();
+  const imageUrl = "https://api.qrserver.com/v1/create-qr-code/?size=600x600&format=png&data=" + encodeURIComponent(url);
+  const link = document.createElement("a");
+  link.href = imageUrl;
+  link.download = "JR-WISHES-Birthday-QR.png";
+  link.target = "_blank";
+  link.rel = "noopener";
+  link.click();
+}
+
 </script>
 
 </body>
